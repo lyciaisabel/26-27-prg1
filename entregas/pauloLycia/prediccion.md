@@ -31,3 +31,24 @@ Predigo que el programa no dará error y mostrará:
 -1 moneda(s) de 2 €
 0 moneda(s) de 1 €
 ```
+
+## Resultado real
+
+```
+0 billete(s) de 100 €
+0 billete(s) de 50 €
+-1 billete(s) de 20 €
+-1 billete(s) de 10 €
+0 billete(s) de 5 €
+-1 moneda(s) de 2 €
+0 moneda(s) de 1 €
+```
+
+## Explicación
+
+La predicción coincide con el resultado real.
+
+- El programa no falla: compila y se ejecuta, pero el resultado no tiene sentido. No se pueden entregar "-1 billetes".
+- Las cantidades negativas suman exactamente el cambio negativo: `-20 - 10 - 2 = -32`. El algoritmo descompone la **deuda** del cliente en lugar de un cambio.
+- Aparecen ceros en 100 € y 50 € porque la división entera trunca hacia cero (`-32 / 100 = 0`), no hacia abajo.
+- El algoritmo solo es correcto si se cumplen las condiciones del enunciado. Como no se permiten estructuras de control, el programa no puede validar la entrada: la responsabilidad de cumplir las condiciones queda en quien usa el programa.
